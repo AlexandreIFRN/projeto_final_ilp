@@ -6,92 +6,117 @@ Este é um sistema simples de gerenciamento de inventário e vendas de uma loja,
 
 ## 📦 Funcionalidades
 
-✅ Adicionar produtos ao inventário  
-✅ Remover produtos do inventário  
-✅ Consultar estoque com filtros  
-✅ Registrar vendas (com atualização do estoque)  
-✅ Relatórios de vendas por semana e por mês  
-✅ Relatório de estoque atual  
-✅ Exportação dos dados (`.csv`)  
+- ✅ Adicionar produtos ao inventário  
+- ✅ Remover produtos do inventário  
+- ✅ Consultar estoque com filtros  
+- ✅ Registrar vendas (com atualização do estoque)  
+- ✅ Relatórios de vendas por semana e por mês  
+- ✅ Relatório de estoque atual  
+- ✅ Exportação dos dados (`.csv`)  
 
 ---
 
 ## 🗂 Estrutura de Diretórios
 
+```
 inventario_loja/
-│
-├── app.py # Aplicação principal Flask
-├── inventario.txt # Arquivo com produtos do estoque
-├── vendas.txt # Arquivo com vendas registradas
-├── templates/ # Arquivos HTML (interface)
-│ ├── base.html
-│ ├── index.html
-│ ├── adicionar.html
-│ ├── remover.html
-│ ├── consultar.html
-│ ├── vendas.html
-│ ├── relatorio.html
-│ └── relatorio_estoque.html
-
+├── app.py                   # Aplicação principal Flask
+├── inventario.txt           # Arquivo com produtos do estoque
+├── vendas.txt               # Arquivo com vendas registradas
+├── templates/               # Páginas HTML
+│   ├── base.html
+│   ├── index.html
+│   ├── adicionar.html
+│   ├── remover.html
+│   ├── consultar.html
+│   ├── vendas.html
+│   ├── relatorio.html
+│   └── relatorio_estoque.html
+├── static/                  # Imagens do carrossel
+│   └── img1.jpeg ... img4.jpeg
+```
 
 ---
 
 ## 🚀 Como Executar
 
-1. **Instale o Flask** (se ainda não tiver):
-   ```bash
-   pip install flask
+### 1. Clone o projeto
+```bash
+git clone https://github.com/seuusuario/seurepositorio.git
+cd seurepositorio/inventario_loja
+```
 
+### 2. Crie e ative um ambiente virtual
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### 3. Instale as dependências
+```bash
+pip install flask
+```
+
+### 4. Execute o projeto
+```bash
 python app.py
+```
 
-http://localhost:5000
+Acesse: [http://localhost:5000](http://localhost:5000)
 
+---
 
-🧾 Formatos dos Arquivos
+## 🧾 Formatos dos Arquivos
 
-📁 inventario.txt
-Cada linha representa um produto no formato:
-
-Copiar/Editar
+### 📁 `inventario.txt`
+Cada linha representa um produto:
+```
 nome;quantidade;preco_unitario;categoria
+```
 
-📁 vendas.txt
-Cada linha representa uma venda registrada:
-
-Copiar/Editar
+### 📁 `vendas.txt`
+Cada linha representa uma venda:
+```
 nome;quantidade;preco_unitario;total;data_hora
+```
 
-📊 Relatórios
-Relatório de Vendas:
-Agrupamento por semana e por mês
+---
 
-Totais exibidos em tabelas HTML
+## 📊 Relatórios
 
-Relatório de Estoque Atual:
-Exibe todos os produtos com nome, quantidade, preço e categoria
+- **Relatório de Vendas**: agrupados por semana e por mês, com totais em tabelas
+- **Relatório de Estoque Atual**: lista todos os produtos com nome, quantidade, preço e categoria
+- **Exportações CSV**:
+  - 📤 `/exportar_vendas` → `vendas.csv`
+  - 📤 `/exportar_estoque` → `estoque.csv`
 
-Exportações:
-📤 /exportar_vendas → exporta vendas.csv
+---
 
-📤 /exportar_estoque → exporta estoque.csv
+## 🛠️ Tecnologias Utilizadas
 
-🛠️ Tecnologias Utilizadas
+- Python 3.x  
+- Flask  
+- HTML5  
+- Bootstrap 5  
+- Armazenamento local em arquivos `.txt`
 
-Python 3.x
+---
 
-Flask
+## 💡 Boas Práticas Aplicadas
 
-HTML5 / Bootstrap 5
+- Separação entre lógica (Python) e visual (templates)
+- Interface responsiva com Bootstrap
+- Código simples, legível e modular
+- Sem dependência de banco de dados externo
 
-Armazenamento em arquivos .txt
+---
 
-📚 Pontos de Boas Práticas
-Separação de lógica e visual com templates Flask
+## 👨‍💻 Autores
 
-Interface intuitiva e responsiva com Bootstrap
+Desenvolvido por:
 
-Persistência de dados com arquivos simples
+- Alexandre Cleiton  
+- Frank  
+- Yan  
 
-Código comentado, legível e modular
-
-
+**IFRN - Grupo 6 – Introdução à Lógica de Programação**
