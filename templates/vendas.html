@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="mb-3">Registrar Venda</h3>
+
+<form method="POST" class="row g-3">
+    <div class="col-md-6">
+        <label class="form-label">Produto:</label>
+        <select name="produto" class="form-select" required>
+            {% for p in produtos %}
+            <option value="{{ p.nome }}">{{ p.nome }} ({{ p.quantidade }} unid - R$ {{ "%.2f"|format(p.preco) }})</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Quantidade:</label>
+        <input type="number" name="quantidade" class="form-control" min="1" required>
+    </div>
+    <div class="col-md-3 d-grid align-items-end">
+        <button type="submit" class="btn btn-warning">Registrar Venda</button>
+    </div>
+</form>
+
+{% if mensagem %}
+<div class="alert alert-info mt-3">{{ mensagem }}</div>
+{% endif %}
+<a href="{{ url_for('index') }}" class="btn btn-secondary mt-3">Voltar</a>
+{% endblock %}

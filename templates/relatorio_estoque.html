@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="mb-3">Relatório de Estoque Atual</h3>
+
+{% if estoque %}
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Nome</th>
+            <th>Quantidade</th>
+            <th>Preço (R$)</th>
+            <th>Categoria</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in estoque %}
+        <tr>
+            <td>{{ item.nome }}</td>
+            <td>{{ item.quantidade }}</td>
+            <td>R$ {{ "%.2f"|format(item.preco) }}</td>
+            <td>{{ item.categoria }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="text-muted">Estoque vazio.</p>
+{% endif %}
+
+<a href="{{ url_for('index') }}" class="btn btn-secondary mt-3">Voltar</a>
+{% endblock %}
+
+<a href="{{ url_for('exportar_estoque') }}" class="btn btn-success mt-3">📥 Exportar Estoque (.csv)</a>

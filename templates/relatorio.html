@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="mb-4">Relatórios de Vendas</h3>
+
+<h5 class="text-primary">🔹 Total por Semana</h5>
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Semana</th>
+            <th>Total de Vendas (R$)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for semana, total in vendas_semanal.items() %}
+        <tr>
+            <td>{{ semana }}</td>
+            <td>R$ {{ "%.2f"|format(total) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h5 class="text-primary mt-4">🔹 Total por Mês</h5>
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Mês</th>
+            <th>Total de Vendas (R$)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for mes, total in vendas_mensal.items() %}
+        <tr>
+            <td>{{ mes }}</td>
+            <td>R$ {{ "%.2f"|format(total) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ url_for('index') }}" class="btn btn-secondary mt-4">Voltar</a>
+{% endblock %}
+
+<a href="{{ url_for('exportar_vendas') }}" class="btn btn-success mt-3">📥 Exportar Vendas (.csv)</a>

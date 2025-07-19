@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="mb-3">Consulta de Produtos</h3>
+
+<form method="POST" class="row g-3 mb-3">
+    <div class="col-md-6">
+        <input type="text" name="filtro_nome" class="form-control" placeholder="Filtrar por nome">
+    </div>
+    <div class="col-md-4">
+        <input type="text" name="filtro_categoria" class="form-control" placeholder="Filtrar por categoria">
+    </div>
+    <div class="col-md-2 d-grid">
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+    </div>
+</form>
+
+{% if produtos %}
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Nome</th>
+            <th>Quantidade</th>
+            <th>Preço (R$)</th>
+            <th>Categoria</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in produtos %}
+        <tr>
+            <td>{{ p.nome }}</td>
+            <td>{{ p.quantidade }}</td>
+            <td>{{ "%.2f"|format(p.preco) }}</td>
+            <td>{{ p.categoria }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="text-muted">Nenhum produto encontrado.</p>
+{% endif %}
+<a href="{{ url_for('index') }}" class="btn btn-secondary mt-3">Voltar</a>
+{% endblock %}
