@@ -1,0 +1,4 @@
+Sapato;5;200.0;Vestuário
+Camisa polo;10;120.0;Vestuário
+Meia;15;5.0;Vestuário
+Camisa;20;80.0;Vestuário

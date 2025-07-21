@@ -1,9 +1,33 @@
 from flask import Flask, render_template, request, redirect, url_for, Response
-from datetime import datetime
-from collections import defaultdict
-import os
 
+# Esse comando importa funções e classes do módulo **Flask**, que é um microframework usado para criar aplicações web em Python. Aqui está o que cada item faz:
+
+# - **`Flask`**: é a classe principal usada para criar uma instância do aplicativo web.
+# - **`render_template`**: serve para renderizar arquivos HTML com variáveis (templates Jinja2).
+# - **`request`**: permite acessar dados enviados pelo cliente, como formulários e parâmetros de URL.
+# - **`redirect`**: redireciona o usuário para outra rota ou URL.
+# - **`url_for`**: gera URLs com base no nome de funções (evita usar strings fixas).
+# - **`Response`**: permite criar respostas HTTP personalizadas.
+
+from datetime import datetime
+
+# Importa a classe datetime do módulo datetime, que é usada para trabalhar com data e hora atual (por exemplo, registrar o horário de uma ação).
+
+from collections import defaultdict
+
+
+# Importa **`defaultdict`**, uma variação do dicionário do Python. Ele cria automaticamente um valor padrão se a chave não existir. Por exemplo:
+# ```python
+# d = defaultdict(int)
+# print(d['x'])  # Saída: 0
+
+import os
 app = Flask(__name__)
+
+# Importa o módulo **`os`**, que permite interagir com o sistema operacional, como manipular arquivos, diretórios, variáveis de ambiente etc.
+# ---
+# ### ```python
+# app = Flask(__name__)
 
 # Arquivos
 INVENTARIO = 'inventario.txt'
@@ -12,6 +36,7 @@ VENDAS = 'vendas.txt'
 # =======================
 # ROTA: ADICIONAR PRODUTO
 # =======================
+
 @app.route('/adicionar', methods=['GET', 'POST'])
 def adicionar():
     if request.method == 'POST':
